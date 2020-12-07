@@ -1,0 +1,12 @@
+
+
+@ Entity = An entity represents a table stored in a database. Every instance of an entity represents a row in the table.
+
+@Id  = Each JPA entity must have a primary key which uniquely identifies it. The @Id annotation defines the primary key
+
+
+@GeneratedValue =  with this We can generate the identifiers in different ways(give us a generator for the Id )
+
+JPA takes care of creating in the background creates the different entities in the database , creates a project table in the database
+and with show sql= true that's going to show on the console
+

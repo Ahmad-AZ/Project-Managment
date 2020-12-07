@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts::header">
+
+
+
+</head>  <!--the same like BAR -->
+
+<style>
+    table, th, td {
+        border: 2px solid black;
+    }
+</style>
+
+<body>
+<nav th:replace="layouts :: NAVBAR" ></nav>  <!--feature in thymeleaf to reuse the code in layouts.html with fragment and replace with name  BAR -->
+
+            <div align="center">
+                <h4> Current Projects</h4>
+
+                <table>
+                    <thead>
+                    <tr>
+                       <th>Project name</th>
+                        <th>Project Stage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                       <tr th:each="aProject : ${projects}">
+                           <td th:text="${aProject.name}"/>
+                           <td th:text="${aProject.stage}"/>
+
+                       </tr>
+                    </tbody>
+                </table>
+            </div><br><br>
+
+            <div align="center">
+                <h4> Current Employees</h4>
+                <table style="width:80%">
+
+                    <thead align="center" >
+                    <tr>
+                        <th> Firts Name</th>
+                        <th> Last Name</th>
+                        <th> E-Mails </th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <tr   th:each="empo :${employees}">
+                        <td  th:text="${empo.firstName}" />
+                        <td  th:text="${empo.lastName}" />
+                        <td  th:text="${empo.email}"/>
+
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts::header"></head>  <!--the same like BAR -->
+
+<body>
+<nav th:replace="layouts :: NAVBAR" ></nav>  <!--feature in thymeleaf to reuse the code in layouts.html with fragment and replace with name  BAR -->
+
+        <div align="center">
+
+
+
+            <h1> create employee</h1>
+                <form  action="/employees/save" th:object="${employee}" method="post" >
+
+
+                <fieldset >
+                    <legend> registration: </legend>
+                    <label> First Name:</label>
+                    <input th:type="text"   th:field="${employee.firstName}" ><br><br>
+
+                    <label> Last Name:</label>
+                    <input th:type="text"   th:field="${employee.lastName}" ><br><br>
+
+                    <label> E-Mail:</label>
+                    <input th:type="text"   th:field="${employee.email}" ><br><br>
+
+                    <button th:type="submit" > register </button>
+
+
+                </fieldset>
+                 </form>
+
+
+
+
+        </div>
+
+
+
+
+</body>
+</html>

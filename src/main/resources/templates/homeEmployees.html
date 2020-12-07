@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts::header">
+
+
+    <style>
+        table, th, td {
+            border: 2px solid black;
+        }
+    </style>
+</head>  <!--the same like BAR -->
+
+
+<body>
+
+             <div align="center">
+                <h4> Current Employees</h4>
+                 <table style="width:80%">
+
+                     <thead align="center" >
+                     <tr>
+                         <th> Firts Name</th>
+                         <th> Last Name</th>
+                         <th> E-Mails </th>
+                     </tr>
+                     </thead>
+
+                     <tbody>
+
+                     <tr   th:each="empo :${employeeList}">
+
+                         <td  th:text="${empo.firstName}" />
+                         <td  th:text="${empo.lastName}" />
+                         <td  th:text="${empo.email}"/>
+
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+
+
+
+</body>
+</html>
