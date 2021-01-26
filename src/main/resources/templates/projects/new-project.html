@@ -18,9 +18,29 @@
                     <option th:value="INPROGRESS"> In Progress </option>
                     <option th:value="COMPLETED"> Completed </option>
 
+
                 </select>
 
                 <textarea th:type="submit"  placeholder="Enter Project Description"  th:field="${project.description}"> </textarea>
+
+                <select th:field="*{employees}" multiple="multiple" ><!--asterisk is used to reference a property is inside of the parent object -->
+
+                    <!--iterate inside a list of employees-->
+                    <option th:each="employee : ${allEmployees}"
+                     th:value="${employee.employeeId}"
+                    th:text="${employee.firstName}"
+                    >
+
+
+                        <!-- th:value represent the value that selected (So every employee obviously has an I.D.
+                        and so we're using this as a unique identifier when a user selects
+                         a particular employee.This is the data that is passed in as part of the request.)-->
+                    </option>
+
+
+
+                </select>
+
                 <button type="submit"> Create Project</button>
 
 

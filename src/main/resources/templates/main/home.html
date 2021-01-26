@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts::header">
+<head th:replace="layouts::header"></head>  <!--the same like BAR -->
 
 
-
-</head>  <!--the same like BAR -->
-
-<style>
-    table, th, td {
-        border: 2px solid black;
-    }
-</style>
-
-<body>
 <nav th:replace="layouts :: NAVBAR" ></nav>  <!--feature in thymeleaf to reuse the code in layouts.html with fragment and replace with name  BAR -->
 
-            <div align="center">
-                <h4> Current Projects</h4>
+<body>
 
-                <table>
-                    <thead>
-                    <tr>
-                       <th>Project name</th>
-                        <th>Project Stage</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                       <tr th:each="aProject : ${projects}">
-                           <td th:text="${aProject.name}"/>
-                           <td th:text="${aProject.stage}"/>
+<div class="container">
+    <h3>Main Dashboard</h3>
 
-                       </tr>
-                    </tbody>
-                </table>
-            </div><br><br>
 
-            <div align="center">
-                <h4> Current Employees</h4>
-                <table style="width:80%">
 
-                    <thead align="center" >
-                    <tr>
-                        <th> Firts Name</th>
-                        <th> Last Name</th>
-                        <th> E-Mails </th>
-                    </tr>
-                    </thead>
+    <h4> Current Projects</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    <table  class="table table-bordered  table-striped" >
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>Project Stage</th>
+                            <th>Count Stages</th>
+                        </tr>
+                        </thead>
+                            <tbody>
+                                <tr th:each="eProject : ${projects}">
+                                    <td th:text="${eProject.name}"/>
+                                    <td th:text="${eProject.stage}"/>
 
-                    <tbody>
+                                </tr>
+                            </tbody>
+                    </table>
 
-                    <tr   th:each="empo :${employees}">
-                        <td  th:text="${empo.firstName}" />
-                        <td  th:text="${empo.lastName}" />
-                        <td  th:text="${empo.email}"/>
+                </div>
 
-                    </tr>
-                    </tbody>
-                </table>
+
+                <div class="col-md-4" >
+                    <canvas id="myPieChart" height="50" width="50"></canvas>
+
+                    <script>
+                        const charData = "[[${projectStatusCnt}]]";
+                    </script>
+
+                   <!--//  now accessible in the java script"-->
+                </div> <!--After creating  canvas area, you must add a JavaScript to do the drawing.-->
             </div>
 
 
+</div>
 
+<div class="container">
+    <h4> Current Employees</h4>
+        <div class="row">
+            <div class="col-md-6">
 
+                <table  class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th> Firts Name</th>
+                        <th> Last Name</th>
+                        <th> Project Count </th>
+                    </tr>
+                    </thead>
 
+                    <tbody>
 
+                    <tr   th:each="EmployeeProjectCnt :${employeesListProjectCnt}">
+                        <td  th:text="${EmployeeProjectCnt.firstName}" />
+                        <td  th:text="${EmployeeProjectCnt.lastName}" />
+                        <td  th:text="${EmployeeProjectCnt.projectCount}"/>
 
+                    </tr>
+                    </tbody>
+                </table>
 
+            </div>
 
+        </div>
+</div>
 
+<script type="text/javascript" th:src="@{js/myChart.js}"></script>
 
 
 
